@@ -112,7 +112,11 @@ function Navbar() {
             {["Home", "About"].map((label) => (
               <li key={label}>
                 <Link
-                  to={`/${label.toLowerCase().replace(/\s+/g, "-")}`}
+                  to={
+                    label === "Home"
+                      ? "/"
+                      : `/${label.toLowerCase().replace(/\s+/g, "-")}`
+                  }
                   className="text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
                 >
                   {label}
@@ -217,7 +221,11 @@ function Navbar() {
             ].map((label) => (
               <Link
                 key={label}
-                to={`/${label.toLowerCase().replace(/\s+/g, "-")}`}
+                to={
+                  label === "Home"
+                    ? "/"
+                    : `/${label.toLowerCase().replace(/\s+/g, "-")}`
+                }
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-dark text-base font-medium border-b border-gray-200 py-3 hover:text-[#229000] transition"
               >
