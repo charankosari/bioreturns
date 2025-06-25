@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../App.css";
-import HomePagePic from "../assets/homepage-pic.jpg";
 import ProductFeatures from "../components/ProductFeatures";
 import PlasticAwarenessSection from "../components/PlasticPage";
 import BiodegradableAwarenessSection from "../components/BiodegradableAwarenessSection";
@@ -11,7 +10,7 @@ function HomePage() {
       <div className="relative w-full h-[700px] overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <img
-          src={HomePagePic}
+          src="https://github.com/charankosari/bioreturns/blob/main/src/assets/homepage-pic.jpg?raw=true"
           alt="Plastic Waste Awareness"
           className="absolute inset-0 w-full h-full object-cover"
         />

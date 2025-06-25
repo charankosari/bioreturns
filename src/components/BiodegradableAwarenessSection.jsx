@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ProductVideo from "../assets/productvideo.mp4";
 
 const BiodegradableAwarenessSection = () => {
   useEffect(() => {
@@ -15,7 +14,7 @@ const BiodegradableAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 hover:scale-[1.01] transition">
             <video
-              src={ProductVideo}
+              src="https://github.com/charankosari/bioreturns/blob/main/src/assets/productvideo.mp4?raw=true"
               autoPlay
               muted
               loop
@@ -54,7 +53,7 @@ const BiodegradableAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
             <video
-              src={ProductVideo}
+              src="https://github.com/charankosari/bioreturns/blob/main/src/assets/productvideo.mp4?raw=true"
               autoPlay
               muted
               loop
