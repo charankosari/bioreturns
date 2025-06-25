@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import { Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Footer from "../pages/FooterPage";
 function Layout() {
   const [products, setProducts] = useState([]);
 
@@ -44,6 +45,13 @@ function Layout() {
           <Outlet context={{ products }} />
         </motion.main>
       </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <Footer />
+      </motion.div>
     </>
   );
 }
