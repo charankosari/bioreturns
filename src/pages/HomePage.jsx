@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import HomePagePic from "../assets/homepage-pic.jpg";
 import ProductFeatures from "../components/ProductFeatures";
+import PlasticAwarenessSection from "../components/PlasticPage";
+import BiodegradableAwarenessSection from "../components/BiodegradableAwarenessSection";
 
 function HomePage() {
   return (
     <div>
-      <div className="relative w-full h-[600px] overflow-hidden flex items-center justify-center">
+      <div className="relative w-full h-[700px] overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <img
           src={HomePagePic}
@@ -40,6 +42,8 @@ function HomePage() {
           </Link>
         </div>
       </div>
+      <PlasticAwarenessSection />
+      <BiodegradableAwarenessSection />
       <ProductFeatures />
     </div>
   );

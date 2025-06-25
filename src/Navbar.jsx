@@ -3,36 +3,34 @@ import { Link } from "react-router-dom";
 import Logo from "./assets/logo.png";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Squash as Hamburger } from "hamburger-react";
+
 function Navbar({ products }) {
   const [activeCategory, setActiveCategory] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const [isProductsVisible, setIsProductsVisible] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
+
   const menuRef = useRef();
-  const mobileMenuOpenRef = useRef(mobileMenuOpen);
   const hamburgerRef = useRef();
-  useEffect(() => {
-    mobileMenuOpenRef.current = mobileMenuOpen;
-  }, [mobileMenuOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        mobileMenuOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        hamburgerRef.current &&
-        !hamburgerRef.current.contains(event.target)
-      ) {
-        setMobileMenuOpen(false);
+    const handleScroll = () => {
+      if (window.scrollY < 50) {
+        setShowNavbar(true);
+      } else if (window.scrollY > lastScrollY.current) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
       }
+      lastScrollY.current = window.scrollY;
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [mobileMenuOpen]);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMouseEnter = () => {
     setActiveCategory("products");
@@ -56,8 +54,13 @@ function Navbar({ products }) {
   };
 
   return (
-    <header className="relative flex h-20 w-full items-center bg-white shadow">
-      <div className="flex w-[85%] items-center justify-between mx-auto">
+    <header
+      className={`fixed top-0 w-full z-50 bg-white shadow transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="flex w-[85%] items-center justify-between mx-auto h-20">
+        {/* Logo */}
         <Link to="/" className="flex h-12 items-center">
           <img
             src={Logo}
@@ -94,7 +97,6 @@ function Navbar({ products }) {
                 Products
               </span>
 
-              {/* Dropdown */}
               {activeCategory === "products" && (
                 <div
                   className={`fixed top-[80px] left-0 z-50 w-full bg-white shadow-md transition-all duration-300 ${
@@ -104,7 +106,7 @@ function Navbar({ products }) {
                   }`}
                 >
                   <div className="w-[80%] mx-auto px-8 py-4">
-                    <div className="flex flex-row flex-wrap justify-center gap-x-12 gap-y-2">
+                    <div className="flex flex-wrap justify-center gap-x-12 gap-y-2">
                       {products.map((product) => (
                         <Link
                           key={product.id}
@@ -157,9 +159,9 @@ function Navbar({ products }) {
         {/* Mobile Menu */}
         <div
           ref={menuRef}
-          className={`fixed top-[66px] right-0 z-50 h-full w-[85%] max-w-xs bg-white shadow-lg transition-transform duration-300 ${
+          className={`fixed top-[66px] right-0 z-50 w-[85%] max-w-xs bg-white shadow-lg transition-transform duration-300 ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          } h-[calc(100vh-5px)]`}
         >
           <div className="p-4 flex flex-col gap-2 relative h-full overflow-y-auto pb-24">
             {[
@@ -184,7 +186,6 @@ function Navbar({ products }) {
               </Link>
             ))}
 
-            {/* Products Accordion */}
             <div className="border-b border-gray-200">
               <button
                 onClick={toggleProducts}
