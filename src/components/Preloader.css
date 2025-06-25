@@ -1,0 +1,40 @@
+.preloader-container {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.preloader-text {
+  display: flex;
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(90deg, #8f00ff, #229000, #ff8a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 24px;
+}
+
+.spinner {
+  border: 6px solid rgba(255, 255, 255, 0.08);
+  border-top: 6px solid #229000;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
