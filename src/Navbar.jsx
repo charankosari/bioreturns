@@ -12,7 +12,6 @@ function Navbar({ products }) {
   const menuRef = useRef();
   const mobileMenuOpenRef = useRef(mobileMenuOpen);
   const hamburgerRef = useRef();
-  console.log(products);
   useEffect(() => {
     mobileMenuOpenRef.current = mobileMenuOpen;
   }, [mobileMenuOpen]);
@@ -158,7 +157,7 @@ function Navbar({ products }) {
         {/* Mobile Menu */}
         <div
           ref={menuRef}
-          className={`fixed top-[90px] right-0 z-50 h-full w-[85%] max-w-xs bg-white shadow-lg transition-transform duration-300 ${
+          className={`fixed top-[66px] right-0 z-50 h-full w-[85%] max-w-xs bg-white shadow-lg transition-transform duration-300 ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -212,7 +211,7 @@ function Navbar({ products }) {
                     >
                       <div className="h-9 w-9 flex items-center justify-center overflow-hidden rounded border border-gray-300">
                         <img
-                          src={product.imageurls[0]}
+                          src={JSON.parse(product.image_urls)[0]}
                           alt={product.name}
                           className="h-full w-full object-cover"
                         />

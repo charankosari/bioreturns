@@ -1,39 +1,46 @@
 import { Link } from "react-router-dom";
 import "../App.css";
-import HomePagePic from "../assets/pic2.jpg";
+import HomePagePic from "../assets/homepage-pic.jpg";
+import ProductFeatures from "../components/ProductFeatures";
 
 function HomePage() {
   return (
-    <div className="relative w-full h-[600px] overflow-hidden">
-      {/* Background Image */}
-      <img
-        src={HomePagePic}
-        alt="Plastic Waste Awareness"
-        className="w-full h-full object-cover"
-      />
+    <div>
+      <div className="relative w-full h-[600px] overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
+        <img
+          src={HomePagePic}
+          alt="Plastic Waste Awareness"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-      {/* Floating card on image */}
-      <div className="absolute top-1/2 right-10 -translate-y-1/2 bg-white/60 backdrop-blur-lg p-10 rounded-2xl shadow-2xl border border-white/30 max-w-xl">
-        <h2 className="text-2xl font-bold mb-5 text-gray-900">
-          BioReturns — A Biodegradable Product
-        </h2>
-        <p className="text-gray-800 mb-5 leading-relaxed">
-          Every day, we use over <strong>5 crore plastic bags</strong> globally,
-          harming our environment and wildlife. Plastic takes centuries to
-          decompose, polluting our cities and oceans.
-        </p>
-        <p className="text-gray-800 mb-8 leading-relaxed">
-          Switch to biodegradable, eco-friendly bags from{" "}
-          <strong>BioReturns</strong>. Same price — but kind to nature and built
-          for a sustainable, safe tomorrow.
-        </p>
-        <Link
-          to="/products"
-          className="inline-block px-6 py-3 rounded-lg bg-[#229000] text-white font-medium transition duration-300 hover:bg-[#228000]"
-        >
-          See Our Products
-        </Link>
+        {/* Gradient + Glassmorphism overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white/10 backdrop-blur-xs"></div>
+
+        {/* Text content directly on the image */}
+        <div className="relative z-10 text-white text-center max-w-3xl mx-auto px-6 py-10">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-6 leading-tight drop-shadow-2xl">
+            BioReturns — A Biodegradable Product
+          </h2>
+          <p className="text-base sm:text-lg mb-6 leading-relaxed drop-shadow-lg">
+            Every day, we use over <strong>5 crore plastic bags</strong>{" "}
+            globally, harming our environment and wildlife. Plastic takes
+            centuries to decompose, polluting our cities and oceans.
+          </p>
+          <p className="text-base sm:text-lg mb-8 leading-relaxed drop-shadow-lg">
+            Switch to biodegradable, eco-friendly bags from{" "}
+            <strong>BioReturns</strong>. Same price — but kind to nature and
+            built for a sustainable, safe tomorrow.
+          </p>
+          <Link
+            to="/products"
+            className="inline-block px-8 sm:px-10 py-3 sm:py-4 rounded-lg bg-[#228000] text-white text-lg sm:text-xl font-semibold transition duration-300 hover:bg-[#229000] shadow-xl"
+          >
+            See Our Products
+          </Link>
+        </div>
       </div>
+      <ProductFeatures />
     </div>
   );
 }

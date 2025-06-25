@@ -29,3 +29,23 @@
 .animate-slide-up {
   animation: slide-up 0.3s ease-in forwards;
 }
+
+.content.grid5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+}
