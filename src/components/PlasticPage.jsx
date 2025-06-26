@@ -62,7 +62,7 @@ const PlasticAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
             <video
-              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/productvideo_c0xfam.mp4"
+              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/plasticvideo_r3reei.mp4"
               autoPlay
               muted
               loop
