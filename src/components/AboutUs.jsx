@@ -30,9 +30,6 @@ function AboutUs() {
             <span className="font-semibold text-gray-900">BioReturns</span>,
             you’re supporting a cleaner, greener planet for generations to come.
           </p>
-          <button className="px-6 py-3 bg-orange-500 text-white text-lg font-semibold rounded-full shadow hover:bg-orange-600 transition duration-300">
-            Explore Our Products
-          </button>
         </div>
 
         {/* Image Section */}
