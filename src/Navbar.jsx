@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "./assets/logo.png";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Squash as Hamburger } from "hamburger-react";
+import { Link as ScrollLink } from "react-scroll";
 
 function Navbar({ products }) {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -72,20 +73,25 @@ function Navbar({ products }) {
         {/* Desktop Nav */}
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-8">
-            {["Home", "About"].map((label) => (
-              <li key={label}>
-                <Link
-                  to={
-                    label === "Home"
-                      ? "/"
-                      : `/${label.toLowerCase().replace(/\s+/g, "-")}`
-                  }
-                  className="text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/"
+                className="text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <ScrollLink
+                to="about-us"
+                smooth={true}
+                offset={-80}
+                duration={600}
+                className="cursor-pointer text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
+              >
+                About
+              </ScrollLink>
+            </li>
 
             {/* Products Dropdown */}
             <li
@@ -131,18 +137,16 @@ function Navbar({ products }) {
               )}
             </li>
 
-            {["Certificates", "Distributors", "Other", "Contact Us"].map(
-              (label) => (
-                <li key={label}>
-                  <Link
-                    to={`/${label.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              )
-            )}
+            {["Certificates", "Distributors", "Contact Us"].map((label) => (
+              <li key={label}>
+                <Link
+                  to={`/${label.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="text-dark hover:text-[#229000] py-4 text-sm xl:text-base transition"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -164,28 +168,36 @@ function Navbar({ products }) {
           } h-[calc(100vh-5px)]`}
         >
           <div className="p-4 flex flex-col gap-2 relative h-full overflow-y-auto pb-24">
-            {[
-              "Home",
-              "About",
-              "Certificates",
-              "Distributors",
-              "Other",
-              "Contact Us",
-            ].map((label) => (
+            {/* Static home link */}
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-dark text-base font-medium border-b border-gray-200 py-3 hover:text-[#229000] transition"
+            >
+              Home
+            </Link>
+            {/* About - scroll */}
+            <ScrollLink
+              to="about-us"
+              smooth={true}
+              offset={-80}
+              duration={600}
+              onClick={() => setMobileMenuOpen(false)}
+              className="cursor-pointer text-dark text-base font-medium border-b border-gray-200 py-3 hover:text-[#229000] transition"
+            >
+              About
+            </ScrollLink>
+            {/* Other pages */}
+            {["Certificates", "Distributors", "Contact Us"].map((label) => (
               <Link
                 key={label}
-                to={
-                  label === "Home"
-                    ? "/"
-                    : `/${label.toLowerCase().replace(/\s+/g, "-")}`
-                }
+                to={`/${label.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-dark text-base font-medium border-b border-gray-200 py-3 hover:text-[#229000] transition"
               >
                 {label}
               </Link>
             ))}
-
             <div className="border-b border-gray-200">
               <button
                 onClick={toggleProducts}
@@ -225,6 +237,7 @@ function Navbar({ products }) {
                 </div>
               )}
             </div>
+            ;
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import OurClients from "../components/OurClients";
 import AboutUs from "../components/AboutUs";
 import OnlinePlatforms from "../components/OnlinePlatforms";
 import SustainableUpdates from "../components/SustainableUpdates";
+import Faqs from "../components/Faqs";
 
 function HomePage() {
   return (
@@ -49,9 +50,13 @@ function HomePage() {
       <BiodegradableAwarenessSection />
       <ProductFeatures />
       <OurClients />
-      <AboutUs />
+      <div id="about-us">
+        <AboutUs />
+      </div>
+
       <OnlinePlatforms />
       <SustainableUpdates />
+      <Faqs />
     </div>
   );
 }

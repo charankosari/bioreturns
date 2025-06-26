@@ -26,7 +26,7 @@ function App() {
         <Route path="/other" element={<OtherPage />} />
         <Route path="/contact-us" element={<ContactPage />} />
         <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:productSlug" element={<ProductDetailPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
       </Route>
 
       {/* Pages without Navbar */}
