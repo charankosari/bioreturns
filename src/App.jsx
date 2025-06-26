@@ -9,6 +9,7 @@ import OtherPage from "./pages/OtherPage";
 import ContactPage from "./pages/ContactPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import SustainableUpdateDetails from "./components/SustainableUpdateDetail";
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
       {/* Pages with Navbar */}
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/about" element={<AboutPage />} /> */}
+        <Route
+          path="/sustainable-updates/:id"
+          element={<SustainableUpdateDetails />}
+        />
         <Route path="/certificates" element={<CertificatesPage />} />
         <Route path="/distributors" element={<DistributorsPage />} />
         <Route path="/other" element={<OtherPage />} />
