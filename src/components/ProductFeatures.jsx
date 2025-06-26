@@ -41,7 +41,7 @@ const ProductFeatures = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-green-100 via-green-50 to-green-100">
+    <div className="bg-gradient-to-br from-green-50 to-green-100">
       <div className=" px-6 max-w-7xl mx-auto pb-20 ">
         {/* Heading */}
         <div className="text-center mb-12">

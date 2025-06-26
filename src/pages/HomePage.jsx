@@ -3,6 +3,9 @@ import "../App.css";
 import ProductFeatures from "../components/ProductFeatures";
 import PlasticAwarenessSection from "../components/PlasticPage";
 import BiodegradableAwarenessSection from "../components/BiodegradableAwarenessSection";
+import OurClients from "../components/OurClients";
+import AboutUs from "../components/AboutUs";
+import OnlinePlatforms from "../components/OnlinePlatforms";
 
 function HomePage() {
   return (
@@ -44,6 +47,9 @@ function HomePage() {
       <PlasticAwarenessSection />
       <BiodegradableAwarenessSection />
       <ProductFeatures />
+      <OurClients />
+      <AboutUs />
+      <OnlinePlatforms />
     </div>
   );
 }

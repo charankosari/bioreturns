@@ -8,7 +8,7 @@ const PlasticAwarenessSection = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-green-100 via-green-50 to-green-100 py-16 lg:py-20">
+    <div className="bg-gradient-to-br from-green-50 to-green-100 py-16 lg:py-20">
       {/* Large Screens (PC only) */}
       <div className="hidden lg:grid max-w-7xl mx-auto px-6 grid-cols-2 gap-14 items-center">
         <div data-aos="fade-up">
