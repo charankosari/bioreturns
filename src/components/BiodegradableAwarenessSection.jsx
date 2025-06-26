@@ -14,10 +14,12 @@ const BiodegradableAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 hover:scale-[1.01] transition">
             <video
-              src="https://github.com/charankosari/bioreturns/blob/main/src/assets/productvideo.mp4?raw=true"
+              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/productvideo_c0xfam.mp4"
               autoPlay
               muted
               loop
+              playsInline
+              controls={false}
               className="w-full h-auto rounded-2xl"
             />
           </div>
@@ -53,10 +55,12 @@ const BiodegradableAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
             <video
-              src="https://github.com/charankosari/bioreturns/blob/main/src/assets/productvideo.mp4?raw=true"
+              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/productvideo_c0xfam.mp4"
               autoPlay
               muted
               loop
+              playsInline
+              controls={false}
               className="w-full h-auto rounded-2xl"
             />
           </div>

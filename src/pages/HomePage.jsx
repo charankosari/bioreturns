@@ -10,7 +10,7 @@ function HomePage() {
       <div className="relative w-full h-[700px] overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <img
-          src="https://github.com/charankosari/bioreturns/blob/main/src/assets/homepage-pic.jpg?raw=true"
+          src="https://res.cloudinary.com/charankosari77/image/upload/v1750914533/bioreturns/homepage-pic_n2wvkm.jpg"
           alt="Plastic Waste Awareness"
           className="absolute inset-0 w-full h-full object-cover"
         />

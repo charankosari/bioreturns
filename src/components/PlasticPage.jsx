@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import PlasticVideo from "../assets/plasticvideo.mp4";
 
 const PlasticAwarenessSection = () => {
   useEffect(() => {
@@ -36,9 +35,11 @@ const PlasticAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 hover:scale-[1.01] transition">
             <video
-              src={PlasticVideo}
+              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/plasticvideo_r3reei.mp4"
               autoPlay
               muted
+              playsInline
+              controls={false}
               loop
               className="w-full h-auto rounded-2xl"
             />
@@ -61,10 +62,12 @@ const PlasticAwarenessSection = () => {
         <div data-aos="fade-up">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
             <video
-              src="https://github.com/charankosari/bioreturns/blob/main/src/assets/plasticvideo.mp4?raw=true"
+              src="https://res.cloudinary.com/charankosari77/video/upload/v1750914537/bioreturns/productvideo_c0xfam.mp4"
               autoPlay
               muted
               loop
+              playsInline
+              controls={false}
               className="w-full h-auto rounded-2xl"
             />
           </div>
