@@ -16,6 +16,19 @@ function ProductDetailPage() {
   const [activeImage, setActiveImage] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const imageRef = useRef(null);
+  const [scrollPercent, setScrollPercent] = useState(0);
+  const descriptionRef = useRef(null);
+
+  const handleScroll = () => {
+    if (descriptionRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = descriptionRef.current;
+      const percent = Math.min(
+        100,
+        Math.round((scrollTop / (scrollHeight - clientHeight)) * 100)
+      );
+      setScrollPercent(percent);
+    }
+  };
 
   useEffect(() => {
     fetch("https://my-hono-app.shivacharankosari099.workers.dev/products")
@@ -136,7 +149,7 @@ function ProductDetailPage() {
             </div>
 
             {/* Product Info Section */}
-            <div className="p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
+            <div className="p-4 sm:p-6 lg:p-12 flex flex-col justify-center h-[500px]">
               <div className="mb-4 sm:mb-6">
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
                   {product.name}
@@ -144,7 +157,7 @@ function ProductDetailPage() {
                 <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 sm:mb-6"></div>
               </div>
 
-              <div className="prose prose-gray max-w-none">
+              <div className="prose prose-gray max-w-none flex-1 overflow-y-auto">
                 <div className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg whitespace-pre-line">
                   {formatDescription(product.description)}
                 </div>
