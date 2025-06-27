@@ -41,7 +41,7 @@ function Faqs() {
                     <span>{faq.question}</span>
                     <ChevronUpIcon
                       className={`w-5 h-5 transition-transform ${
-                        open ? "rotate-180" : ""
+                        open ? "" : "rotate-180"
                       }`}
                     />
                   </Disclosure.Button>
