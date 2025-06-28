@@ -39,7 +39,7 @@ function HomePage() {
             built for a sustainable, safe tomorrow.
           </p>
           <Link
-            to="/products"
+            to="/product/3"
             className="inline-block px-8 sm:px-10 py-3 sm:py-4 rounded-lg bg-[#228000] text-white text-lg sm:text-xl font-semibold transition duration-300 hover:bg-[#229000] shadow-xl"
           >
             See Our Products
