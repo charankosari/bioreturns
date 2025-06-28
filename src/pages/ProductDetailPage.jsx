@@ -18,17 +18,27 @@ function ProductDetailPage() {
   const imageRef = useRef(null);
   const [scrollPercent, setScrollPercent] = useState(0);
   const descriptionRef = useRef(null);
+  const productContainerRef = useRef(null);
+  const [isImageFixed, setIsImageFixed] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!productContainerRef.current) return;
 
-  const handleScroll = () => {
-    if (descriptionRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = descriptionRef.current;
-      const percent = Math.min(
-        100,
-        Math.round((scrollTop / (scrollHeight - clientHeight)) * 100)
-      );
-      setScrollPercent(percent);
-    }
-  };
+      const rect = productContainerRef.current.getBoundingClientRect();
+
+      // Use different thresholds based on screen width
+      const threshold = window.innerWidth >= 1280 ? 700 : 660;
+
+      if (rect.bottom <= threshold) {
+        setIsImageFixed(false);
+      } else {
+        setIsImageFixed(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     fetch("https://my-hono-app.shivacharankosari099.workers.dev/products")
@@ -79,7 +89,10 @@ function ProductDetailPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Main Product Section */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div
+            ref={productContainerRef}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-0"
+          >
             {/* Image Section */}
             <div className="relative bg-gray-50 p-4 sm:p-6 lg:p-8">
               {/* Mobile/Tablet Swiper */}
@@ -111,12 +124,17 @@ function ProductDetailPage() {
               </div>
 
               {/* Desktop Image with Thumbnails */}
-              <div className="hidden lg:block">
-                <div className="relative group">
+              <div
+                className={`hidden lg:block ${
+                  isImageFixed ? "fixed top-32" : "absolute bottom-0"
+                } w-[500px] z-30`}
+              >
+                <div className="relative group ">
                   <img
                     src={activeImage}
                     alt={product.name}
-                    className="w-full h-[500px] object-cover rounded-xl shadow-lg"
+                    className="w-full h-auto object-contain rounded-xl shadow-lg mx-auto"
+                    style={{ width: "clamp(280px, 40vw, 480px)" }}
                   />
                 </div>
 
@@ -149,7 +167,7 @@ function ProductDetailPage() {
             </div>
 
             {/* Product Info Section */}
-            <div className="p-4 sm:p-6 lg:p-12 flex flex-col justify-center h-[500px]">
+            <div className="p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
               <div className="mb-4 sm:mb-6">
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
                   {product.name}
@@ -168,15 +186,11 @@ function ProductDetailPage() {
 
         {/* More Products Section */}
         {otherProducts.length > 0 && (
-          <div className="mb-16">
+          <div className="relative z-40 mb-16 bg-white">
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Explore More Products
               </h2>
-              <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-4">
-                Discover our complete range of sustainable and biodegradable
-                solutions
-              </p>
             </div>
 
             {/* Swiper Carousel */}
@@ -213,7 +227,7 @@ function ProductDetailPage() {
                   <SwiperSlide key={item.id}>
                     <Link
                       to={`/product/${item.id}`}
-                      className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-green-200 transform hover:-translate-y-1 block"
+                      className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1 block"
                     >
                       <div className="relative overflow-hidden">
                         <img
@@ -227,9 +241,10 @@ function ProductDetailPage() {
                         <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
                           {item.name}
                         </h4>
-                        <div className="text-xs sm:text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                        <div className="text-xs sm:text-sm text-gray-600 line-clamp-1 leading-relaxed">
                           {formatDescription(item.description)}
                         </div>
+
                         <div className="mt-3 sm:mt-4 flex items-center text-green-600 font-medium text-xs sm:text-sm">
                           View Details
                           <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
